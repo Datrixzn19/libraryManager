@@ -1,4 +1,5 @@
 using libraryManager.Data;
+using libraryManager.Endpoints;
 using libraryManager.Models; 
 using Microsoft.EntityFrameworkCore;
 
@@ -19,9 +20,20 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-app.MapGet("/", () => "working");
+app.MapGet("/test", () => "working");
+
+
+app.MapProductEndpoints();
+
+
 
 app.Run();
+
+
+
+
+
+
 
 
 // Generar la base de datos fisica 
