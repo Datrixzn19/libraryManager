@@ -23,6 +23,16 @@ namespace libraryManager.Endpoints
 
             });
 
+            //Buscar por id 
+            libraryGroup.MapGet("/{id:int}", async (AppDbContext db, int id) => {
+                var book = await db.Books.FirstOrDefaultAsync(b=>b.Id == id);
+                return book is null? Results.NotFound() : Results.Ok(book);
+            });
+
+
+
+
+
 
             //POST
             libraryGroup.MapPost("/", async (Book newBook, AppDbContext db) => {
